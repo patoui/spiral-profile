@@ -1,0 +1,23 @@
+{% extends 'layout/app.twig' %}
+
+{% block title %}Edit{% endblock %}
+{% block content %}
+  <div class="row mt-4">
+    <div class="col">
+      <h1 class="d-inline">Edit Todo</h1>
+      <a href="/todo" class="btn btn-outline-secondary btn-sm align-text-bottom ml-3 pl-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill align-text-bottom" viewBox="0 0 16 16">
+          <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+        </svg>
+        <span>Back</span>
+      </a>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <form action="/todo/{{ todo.id }}/edit" method="post">
+        {{ include('todos/form.twig') }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{
+    "name": "patoui/spiral-profile",
+    "type": "project",
+    "license": "MIT",
+    "description": "Profile website written with Spiral framework",
+    "keywords": ["profile", "spiral"],
+    "authors": [
+        {
+            "name": "Patrique Ouimet",
+            "email": "patrique.ouimet@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "cycle/annotated": "^2.0",
+        "cycle/migrations": "^1.0",
+        "cycle/orm": "^1.0",
+        "cycle/proxy-factory": "^1.0",
+        "spiral/database": "^2.3",
+        "spiral/framework": "^2.7",
+        "spiral/jobs": "^2.0",
+        "spiral/migrations": "^2.0",
+        "spiral/nyholm-bridge": "^1.0",
+        "spiral/roadrunner": "^1.4",
+        "spiral/twig-bridge": "^1.1"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^8.5|^9.0"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php -r \"copy('.env.sample', '.env');\"",
+            "php app.php encrypt:key -m .env",
+            "php app.php configure -vv",
+            "spiral get-binary"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

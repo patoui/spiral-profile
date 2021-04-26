@@ -1,0 +1,15 @@
+<input type="hidden" name="csrf-token" value="{{ csrf_token }}"/>
+
+<div class="form-group">
+  <label for="label">Label</label>
+  <input id="label" name="label" class="form-control" type="text" value="{{ todo.label ?? '' }}"/>
+  <small class="text-danger">{{ errors.label ?? '' }}</small>
+</div>
+
+<div class="form-group">
+  <label for="body">Body</label>
+  <textarea id="body" name="body" class="form-control" rows="5">{{ todo.body ?? '' }}</textarea>
+  <small class="text-danger">{{ errors.body ?? '' }}</small>
+</div>
+
+<button type="submit" class="btn btn-primary">{{ todo.id ? 'Update' : 'Add' }}</button>
