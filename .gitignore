@@ -5,3 +5,7 @@ rr*
 spiral*
 .env
 .phpunit.result.cache
+public/css/*
+public/js/*
+mix-manifest.json
+node_modules

@@ -1,0 +1,27 @@
+@tailwind  base;
+@tailwind  components;
+@tailwind  utilities;
+
+.markdown-body a {
+  color: #0366d6
+}
+
+.markdown-body pre {
+  overflow-y: auto;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.covid19 {
+ z-index: 999999;
+}
+
+@media (min-width: 640px) {
+  .covid19 {
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

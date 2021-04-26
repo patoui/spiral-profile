@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "scripts": {
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "@fullhuman/postcss-purgecss": "^1.1.0",
+    "ajv": "^6.5.3",
+    "ajv-keywords": "^3.2.0",
+    "cross-env": "^5.1",
+    "font-awesome": "^4.7.0",
+    "github-markdown-css": "^2.8.0",
+    "imagemin": "^5.3.1",
+    "img-loader": "^3.0.0",
+    "laravel-mix": "^6.0.13",
+    "laravel-mix-purgecss": "^4.1.0",
+    "postcss": "^8.1",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "resolve-url-loader": "^2.3.1",
+    "sass": "^1.15.2",
+    "sass-loader": "^7.1.0",
+    "tailwindcss": "^2.0",
+    "vue": "^2.5.7",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12"
+  }
+}

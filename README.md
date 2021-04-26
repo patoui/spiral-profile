@@ -8,6 +8,7 @@ Make sure that your server is configured with following PHP version and extensio
 * PHP 7.4+, 64bit
 * *mb-string* extension
 * PDO Extension with desired database drivers
+* Node >=12.14.0
 
 Installation
 --------
@@ -18,6 +19,7 @@ $ copy .env.sample .env
 $ php app.php encrypt:key -m .env
 $ php app.php configure -vv
 $ ./vendor/bin/spiral get
+$ npm install && npm run development
 ```
 
 Once the application is installed you can ensure that it was configured properly by executing:

@@ -1,21 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Patrique Ouimet">
+  <!-- <meta name="csrf-token" content=""> -->
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+  <!-- Additional meta tags -->
+  {% block meta %}{% endblock %}
 
-    {% block head %}
-        <title>Todo - {% block title %}{% endblock %}</title>
-    {% endblock %}
-  </head>
-  <body>
-  <div class="container">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- App CSS -->
+  <link href="/css/app.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- Additional CSS -->
+  {% block css %}{% endblock %}
+</head>
+<body>
+<!-- Header -->
+{% if (user.is_admin ?? false) %}
+  <div class="flex mb-3 mr-5 ml-5 items-center">
+    <ul class="w-full p-3 list-reset flex border-solid border-b border-gray-300">
+      <li class="w-1/2 text-center">
+        <a class="{{ request.path is same as('admin/dashboard') ? 'text-black' : 'text-blue-600' }} font-semibold no-underline hover:text-black" href="/dashboard">Dashboard</a>
+      </li>
+      <li class="w-1/2 text-center">
+        <a class="{{ request.path is same as('admin/media') ? 'text-black' : 'text-blue-600' }} font-semibold no-underline hover:text-black" href="/media">Media</a>
+      </li>
+    </ul>
+  </div>
+{% endif %}
+<div class="flex mt-3 mb-3 mr-5 ml-5 items-center">
+  <div class="flex w-5/6">
+    <div class="mt-1 mr-2">
+      <picture>
+        <source srcset="/img/black-white-profile.webp" type="image/webp">
+        <img src="/img/black-white-profile.png" type="image/png" alt="Grayscale profile picture" class="rounded-full w-12 m-auto mb-3"/>
+      </picture>
+    </div>
+    <div>
+      <p class="block text-2xl">Patrique Ouimet</p>
+      <p class="block text-xs italic">Developer</p>
+    </div>
+  </div>
+  <div class="w-1/6 text-right">
+    <a href="{{ user ? '/logout' : '/login' }}" class="mt-2 mr-2" title="{{ user ? 'Logout' : 'Login' }}"><i class="fas {{ user ? 'fa-sign-out-alt' : 'fa-sign-in-alt' }}"></i></a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="mb-4">
+  <div class="flex justify-center w-full sm:w-4/5 md:w-4/5 lg:w-4/5 xl:w-3/5 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 pr-6 sm:pr-8 md:pr-12 lg:pr-20 xl:pr-24 mx-auto">
+    <ul class="w-full p-3 list-reset flex border-solid border-b border-t border-gray-300">
+      <li class="w-1/4 text-center">
+        <a class="{{ request.path is same as('/') ? 'text-black' : 'text-blue-600' }} font-semibold no-underline hover:text-black" href="/">About</a>
+      </li>
+      <li class="w-1/4 text-center">
+        <a class="{{ request.path is same as('blog') ? 'text-black' : 'text-blue-600' }} font-semibold no-underline hover:text-black" href="/blog">Blog</a>
+      </li>
+      <li class="w-1/4 text-center">
+        <a class="{{ request.path is same as('tip') ? 'text-black' : 'text-blue-600' }} font-semibold no-underline hover:text-black" href="/tip">Tips</a>
+      </li>
+      <li class="w-1/4 text-center">
+        <a class="{{ request.path is same as('video') ? 'text-black' : 'text-blue-600' }} font-semibold no-underline hover:text-black" href="/video">Videos</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="flex justify-center">
+  <div class="w-full sm:w-4/5 md:w-4/5 lg:w-4/5 xl:w-3/5 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 pr-6 sm:pr-8 md:pr-12 lg:pr-20 xl:pr-24 flex flex-wrap">
     {% block content %}{% endblock %}
   </div>
-  </body>
+</div>
+
+<div class="w-full sm:w-4/5 md:w-4/5 lg:w-4/5 xl:w-3/5 mt-4 ml-auto mr-auto">
+  <footer class="block mx-auto">
+    <p class="text-center">Website by Patrique Ouimet <3</p>
+    <p class="text-center">
+      <a class="inline-block p-4" href="https://twitter.com/patoui2" title="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a class="inline-block p-4" href="https://github.com/patoui" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </p>
+  </footer>
+</div>
+
+<!-- Additional JS -->
+{% block javascript %}{% endblock %}
+</body>
 </html>
