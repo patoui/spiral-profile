@@ -1,0 +1,9 @@
+{% if get('Spiral\\Boot\\EnvironmentInterface').get('FACEBOOK_APP_ID') %}
+    <meta property="fb:app_id"      content="{{ get('Spiral\\Boot\\EnvironmentInterface').get('FACEBOOK_APP_ID') }}" />
+{% endif %}
+<meta property="article:author" content="Patrique Ouimet" />
+<meta property="article:published_time" content="{{ model.published_at.toIso8601String() }}" />
+{% for model.tags in tag %}
+    <meta property="article:tag"   content="{{ tag.name }}" />
+{% endfor %}
+<meta property="og:url"         content="{{ get('Spiral\\Boot\\EnvironmentInterface').get('APP_URL') . '/' . model.getUri() }}" />

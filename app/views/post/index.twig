@@ -1,0 +1,22 @@
+{% extends 'layout/app.twig' %}
+
+{% block meta %}
+    <meta name="description"        content="A small blog by humble developer Patrique Ouimet primarily working with PHP and JavaScript" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="Patrique Ouimet" />
+    <meta property="og:description" content="A small blog by humble developer Patrique Ouimet primarily working with PHP and JavaScript" />
+    <meta property="og:image"       content="{{ get('Spiral\\Boot\\EnvironmentInterface').get('APP_URL') }}/img/black-white-profile.png" />
+{% endblock %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+    <h1 class="text-4xl mb-4">Articles</h1>
+    {% for post in posts %}
+    <div class="mb-6 w-full">
+        <a href="{{ get('Spiral\\Boot\\EnvironmentInterface').get('APP_URL') }}/post/{{ post.slug }}" class="no-underline font-semibold text-black text-xl hover:underline block">{{ post.title }}</a>
+        <p class="mt-2 mb-2 text-sm text-gray-700">{{ post.short_body }}</p>
+        <p class="text-sm text-gray-600">Published on {{ post.short_published_at }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
