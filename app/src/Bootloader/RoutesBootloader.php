@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bootloader;
 
+use App\Controller\HomeController;
 use App\Controller\TodoController;
 use App\Controller\UserController;
 use Spiral\Boot\Bootloader\Bootloader;
@@ -20,6 +21,8 @@ class RoutesBootloader extends Bootloader
      */
     public function boot(RouterInterface $router): void
     {
+        $router->setRoute('home', (new Route('/', new Action(HomeController::class, 'index')))->withVerbs('GET'));
+
         $router->setRoute('user.index', (new Route('/user', new Action(UserController::class, 'index')))->withVerbs('GET'));
         $router->setRoute('user.show', (new Route('/user/<id:\d+>', new Action(UserController::class, 'show')))->withVerbs('GET'));
         $router->setRoute('user.store', (new Route('/user', new Action(UserController::class, 'store')))->withVerbs('POST'));
