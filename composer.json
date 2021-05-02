@@ -18,6 +18,7 @@
         "cycle/migrations": "^1.0",
         "cycle/orm": "^1.0",
         "cycle/proxy-factory": "^1.0",
+        "fakerphp/faker": "^1.14",
         "spiral/database": "^2.3",
         "spiral/framework": "^2.7",
         "spiral/jobs": "^2.0",
