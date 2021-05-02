@@ -6,6 +6,9 @@ namespace App\Database;
 
 use Cycle\Annotated\Annotation as Cycle;
 use DateTimeImmutable;
+use GitDown\GitDown;
+use Psr\SimpleCache\CacheInterface;
+use Spiral\Boot\MemoryInterface;
 
 /**
  * @Cycle\Entity(repository = "App\Repository\PostRepository")
@@ -32,6 +35,17 @@ class Post
 
     /** @Cycle\Column(type = "timestamp") */
     public DateTimeImmutable $updated_at;
+
+    /**
+     * Get markdown parsed body
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getParsedBody(): string
+    {
+        // TODO: add caching (e.g. redis)
+        return (new GitDown())->parse($this->body);
+    }
 
     /**
      * Get the URI for the post

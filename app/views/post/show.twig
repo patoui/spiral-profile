@@ -12,7 +12,7 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block css %}
-  <style>{{ git_down_styles }}</style>
+  <style>{{ get('GitDown\\GitDown').styles() }}</style>
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@
   </button>
 </form>
 
-<div class="w-full pt-4 pb-4 markdown-body">{{ post.getParsedBody() }}</div>
+<div class="w-full pt-4 pb-4 markdown-body">{{ post.getParsedBody()|raw }}</div>
 
 <div class="w-full p-4">
   <h2 class="text-xl mb-4">Comments</h2>
