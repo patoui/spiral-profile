@@ -32,4 +32,14 @@ class Post
 
     /** @Cycle\Column(type = "timestamp") */
     public DateTimeImmutable $updated_at;
+
+    /**
+     * Get the URI for the post
+     * @param string $root
+     * @return string
+     */
+    public function getUri(string $root = ''): string
+    {
+        return "{$root}/post/{$this->slug}";
+    }
 }

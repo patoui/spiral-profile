@@ -18,7 +18,7 @@
 {% block content %}
 <h1 class="w-full text-4xl text-center font-bold">{{ post.title }}</h1>
 <p class="w-full text-sm text-center text-gray-600">{{ post.short_published_at }}</p>
-<form class="w-full text-sm text-center text-gray-500" method="post" action="{{ route('post.favourite.store', ['post_slug' => post.slug]) }}">
+<form class="w-full text-sm text-center text-gray-500" method="post" action="">
   <input type="hidden" name="csrf-token" value="{{ csrf_token }}"/>
   <button type="submit">
     <i class="fas fa-thumbs-up mr-2"></i>{{ post.favourites_count }}
@@ -29,7 +29,7 @@
 
 <div class="w-full p-4">
   <h2 class="text-xl mb-4">Comments</h2>
-  {% for post.comments in comment %}
+  {% for comment in post.comments %}
     <div class="mb-4 w-full border-b-2">
       <div class="w-full">
         <div class="inline-block w-3/4">
@@ -51,9 +51,9 @@
     <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="body" name="body" type="text"
               placeholder="Leave a comment..." required></textarea>
     {% if errors.body %}
-      {% for errors.body in error %}
+      {% for error in errors.body %}
         <p class="text-red-500 text-xs italic">{{ error }}</p>
-      {% endof %}
+      {% endfor %}
     {% endif %}
   </div>
   <div class="flex justify-end mb-4">

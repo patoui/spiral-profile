@@ -25,6 +25,7 @@ class RoutesBootloader extends Bootloader
         $router->setRoute('home', (new Route('/', new Action(HomeController::class, 'index')))->withVerbs('GET'));
 
         $router->setRoute('post.index', (new Route('/blog', new Action(PostController::class, 'index')))->withVerbs('GET'));
+        $router->setRoute('post.show', (new Route('/post/<post_slug>', new Action(PostController::class, 'show')))->withVerbs('GET'));
 
         $router->setRoute('user.index', (new Route('/user', new Action(UserController::class, 'index')))->withVerbs('GET'));
         $router->setRoute('user.show', (new Route('/user/<id:\d+>', new Action(UserController::class, 'show')))->withVerbs('GET'));

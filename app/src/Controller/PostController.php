@@ -5,13 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\PostRepository;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Spiral\Http\PaginationFactory;
 use Spiral\Http\Request\InputManager;
-use Spiral\Pagination\PaginatorInterface;
 use Spiral\Views\ViewsInterface;
-use stdClass;
 
 class PostController
 {
@@ -43,11 +39,10 @@ class PostController
         ]);
     }
 
-    public function show(ViewsInterface $views): string
+    public function show(string $post_slug, ViewsInterface $views): string
     {
         return $views->render('post/show', [
-            // TODO: replace with instance of Post entity
-            'post' => new stdClass(),
+            'post' => $this->repository->findBySlug($post_slug),
         ]);
     }
 }
