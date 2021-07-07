@@ -3,7 +3,10 @@
     "type": "project",
     "license": "MIT",
     "description": "Profile website written with Spiral framework",
-    "keywords": ["profile", "spiral"],
+    "keywords": [
+        "profile",
+        "spiral"
+    ],
     "authors": [
         {
             "name": "Patrique Ouimet",
@@ -11,21 +14,19 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "ext-json": "*",
+        "php": ">=8.0",
         "ext-mbstring": "*",
-        "calebporzio/gitdown": "^1.3",
-        "cycle/annotated": "^2.0",
-        "cycle/migrations": "^1.0",
-        "cycle/orm": "^1.0",
-        "cycle/proxy-factory": "^1.0",
-        "fakerphp/faker": "^1.14",
-        "spiral/database": "^2.3",
-        "spiral/framework": "^2.7",
+        "spiral/framework": "^2.8",
         "spiral/jobs": "^2.0",
+        "spiral/roadrunner": "^2.3",
+        "spiral/database": "^2.3",
         "spiral/migrations": "^2.0",
         "spiral/nyholm-bridge": "^1.0",
-        "spiral/roadrunner": "^1.4",
+        "cycle/orm": "^1.0",
+        "cycle/proxy-factory": "^1.0",
+        "cycle/annotated": "^2.0",
+        "cycle/migrations": "^1.0",
+        "fakerphp/faker": "^1.14",
         "spiral/twig-bridge": "^1.1"
     },
     "require-dev": {
