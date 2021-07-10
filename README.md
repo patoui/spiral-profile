@@ -2,6 +2,8 @@
 
 A profile website created with Spiral framework 
 
+NOTE: on pause until Spiral framework supports PHP8 (currently unsupported by spiral/jobs)
+
 Server Requirements
 --------
 Make sure that your server is configured with following PHP version and extensions:
